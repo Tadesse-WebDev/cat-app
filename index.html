@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Photo App</title>
+    
+    <style>
+        /* 1. Header & Footer Styling */
+        header, footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 10px;
+        }
+
+        /* 2. Text Animations */
+        header h1 {
+            display: inline-block;
+            animation: textSlideLeft 1.5s ease-out;
+            color: orange;
+        }
+
+        @keyframes textSlideLeft {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        footer p {
+            display: inline-block;
+            animation: textSlideRight 1.9s ease-out;
+            color: #2ecc71; /* ደስ የሚል አረንጓዴ */
+        }
+
+        @keyframes textSlideRight {
+            from { transform: translateX(100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* 3. Navigation Links */
+        header nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.4s;
+            padding: 5px 10px;
+        }
+
+        header nav a:hover {
+            color: orange;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        /* 4. Body & Main Content */
+        body {
+            background-color: #f4f4f4; /* ለዓይን የማይደክም ከለር */
+            font-family: sans-serif; 
+            margin: 0;
+            padding-bottom: 70px; 
+        }
+
+        main {
+            background-color: white; 
+            padding: 20px;
+            margin: 15px;
+            border-radius: 15px; 
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1); 
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+        }
+
+        h2 { color: purple; }
+        h3 { color: blue; }
+        li { color: green; }
+
+        input[type="text"] {
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 80%; /* ለስልክ እንዲመች */
+        }
+        /* የፎቶ ማከማቻ ሳጥን */
+.cat-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* ለስልክ ምቹ አቀማመጥ */
+    gap: 15px; /* በፎቶዎቹ መካከል ያለው ክፍተት */
+    padding: 10px;
+}
+
+.cat-gallery img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover; /* ፎቶዎቹ ሳይለጠጡ እንዲቆረጡ */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.cat-gallery img:hover {
+    transform: scale(1.05); /* ሲነካ ትንሽ ከፍ እንዲል */
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+/* 1. የንዑስ ርዕሶች (h2 እና h3) አኒሜሽን */
+h2, h3 {
+    animation: fadeInUp 1.2s ease-out;
+    display: block; /* አኒሜሽኑ ሙሉውን ርዕስ እንዲያካትት */
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px); /* ከታች 30px ዝቅ ብሎ ይጀምራል */
+        opacity: 0; /* መጀመሪያ አይታይም */
+    }
+    to {
+        transform: translateY(0); /* ወደ ትክክለኛ ቦታው ይመጣል */
+        opacity: 1; /* በደንብ ይታያል */
+    }
+}
+
+/* 2. ለፎቶዎቹ Gallery የተለየ አኒሜሽን (አንዱ ከአንዱ ዘግይቶ እንዲመጣ) */
+.cat-gallery img {
+    animation: zoomIn 1s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+  /* 1. የሊንኮቹ መጀመሪያ ብቅ የሚሉበት አኒሜሽን */
+header nav a {
+    display: inline-block; /* አኒሜሽኑ እንዲሰራ inline-block መሆን አለበት */
+    animation: popIn 1s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* ፈንጠር የሚል እንቅስቃሴ */
+    transition: 0.3s;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0); /* መጀመሪያ አይታይም (ዜሮ ነው) */
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.2); /* ከመደበኛው ትንሽ ተለቅ ይላል */
+    }
+    100% {
+        transform: scale(1); /* ወደ መደበኛ መጠኑ ይመለሳል */
+        opacity: 1;
+    }
+}
+
+/* 2. ሊንኮቹን ስትነካቸው (Hover) የሚኖራቸው ለውጥ */
+header nav a:hover {
+    transform: scale(1.1); /* ስትነካው ትንሽ እንዲያብጥ */
+    color: orange;
+}
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CatPhotoApp</h1>
+        <nav>
+            <a href="#">Home</a> :<a href="#">About</a> : <a href="#">Contact</a>
+          :  <a href="#">email</a>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Cat Photos</h2>
+        <p style="color: #666;">See more cat photos in our gallery.</p>
+        
+        <a href="https://freecatphotoapp.com">
+<section>
+    <h2>የድመት ፎቶዎች ማከማቻ (Gallery)</h2>
+    <div class="cat-gallery">
+        <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="ድመት 1">
+        <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/cats.jpg" alt="ድመት 2">
+        <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/lasagna.jpg" alt="ድመት 3">
+        <img src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/running-cats.jpg" alt="ድመት 4">
+    </div>
+</section>
+        </a>
+
+        <h3>Things cats love:</h3>
+        <ul>
+            <li>Cat nip</li>
+            <li>Laser pointers</li>
+            <li>Lasagna</li>
+        </ul>
+
+        <section>
+            <h2>Cat Form</h2>
+            <form action="https://freecatphotoapp.com/submit-cat-photo">
+                <label><input type="radio" name="indoor-outdoor" value="indoor"> Indoor</label>
+                <label><input type="radio" name="indoor-outdoor" value="outdoor"> Outdoor</label>
+                <br><br>
+                <input type="text" placeholder="cat photo URL" required>
+                <br>
+                <button type="submit" style="background-color: orange; border: none; padding: 10px 20px; border-radius: 5px; color: white; cursor: pointer;">Submit</button>
+                
+                <p style="color: #333; margin-top: 15px;">የድመትዎ ባህሪ ምንድነው?</p>
+                <label><input type="checkbox" name="personality" value="loving"> አፍቃሪ (Loving)</label><br>
+                <label><input type="checkbox" name="personality" value="lazy"> ተኝቶ የሚውል (Lazy)</label><br>
+                <label><input type="checkbox" name="personality" value="energetic"> ንቁ (Energetic)</label>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 በኢትዮጵያ የተሰራ።</p>
+    </footer>
+
+</body>
+</html>
